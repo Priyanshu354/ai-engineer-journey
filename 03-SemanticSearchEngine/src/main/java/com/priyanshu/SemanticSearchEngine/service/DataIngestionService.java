@@ -55,5 +55,23 @@ public class DataIngestionService {
                 .build();
     }
 
+    // Metadata filtering — search only within a tag
+//    public List<SearchResult> searchByTag(String query, int topK, String tag) {
+//
+//        // Filter expression: only search documents where tags contains the tag
+//        Filter.Expression tagFilter = new Filter.Expression(
+//                Filter.ExpressionType.EQ,
+//                new Filter.Key("tags"),
+//                new Filter.Value(tag)
+//        );
+//
+//        SearchRequest searchRequest = SearchRequest
+//                .query(query)
+//                .withTopK(topK)
+//                .withFilterExpression(tagFilter);
+//
+//        List<Document> results = vectorStore.similaritySearch(searchRequest);
+//        return mapToResults(results);
+//    }
 
 }
