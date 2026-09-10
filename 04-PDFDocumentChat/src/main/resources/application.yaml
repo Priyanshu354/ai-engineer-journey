@@ -1,0 +1,39 @@
+  spring:
+    application:
+      name: PDFDocumentChat
+
+    datasource:
+      url: jdbc:postgresql://localhost:5432/vectordb
+      username: user
+      password: password
+      driver-class-name: org.postgresql.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: update
+
+    ai:
+      openai:
+        api-key: ${OPENAI_API_KEY}
+        base-url: https://openrouter.ai/api/v1
+
+        embedding:
+          options:
+            model: openai/text-embedding-3-small
+
+      vectorstore:
+        pgvector:
+          initialize-schema: true
+          dimensions: 1536
+          index-type: hnsw
+          distance-type: cosine_distance
+          max-document-batch-size: 100
+
+    servlet:
+      multipart:
+        max-file-size: 50MB
+        max-request-size: 50MB
+
+  logging:
+    level:
+      org.springframework.ai: DEBUG
